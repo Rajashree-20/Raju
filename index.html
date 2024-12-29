@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Manager</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            background: #3498db;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .section {
+            padding: 2rem 1rem;
+            text-align: center;
+            background: white;
+            margin: 1rem 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .calculator input, .calculator button {
+            padding: 0.5rem;
+            margin: 0.5rem;
+            font-size: 16px;
+        }
+
+        .resources ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .resources ul li {
+            margin: 0.5rem 0;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Personal Finance Manager</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#calculator">Savings Calculator</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about" class="hero">
+        <h1>Take Control of Your Finances</h1>
+        <p>Manage your budget, save more, and achieve financial freedom with our tools and resources.</p>
+    </section>
+
+    <section id="calculator" class="section">
+        <h2>Savings Calculator</h2>
+        <p>Plan your savings effectively!</p>
+        <div class="calculator">
+            <label for="income">Monthly Income ($):</label><br>
+            <input type="number" id="income" placeholder="Enter your income"><br>
+            <label for="expenses">Monthly Expenses ($):</label><br>
+            <input type="number" id="expenses" placeholder="Enter your expenses"><br>
+            <button onclick="calculateSavings()">Calculate Savings</button>
+            <p id="result" style="margin-top: 1rem; font-weight: bold;"></p>
+        </div>
+    </section>
+
+    <section id="resources" class="section">
+        <h2>Helpful Resources</h2>
+        <p>Explore articles and tools to improve your financial literacy.</p>
+        <div class="resources">
+            <ul>
+                <li><a href="#" target="_blank">Budgeting Basics</a></li>
+                <li><a href="#" target="_blank">How to Save for Retirement</a></li>
+                <li><a href="#" target="_blank">Top Investment Strategies</a></li>
+                <li><a href="#" target="_blank">Debt Reduction Tips</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>Have questions? Reach out to us!</p>
+        <form id="contact-form">
+            <input type="text" placeholder="Your Name" required><br>
+            <input type="email" placeholder="Your Email" required><br>
+            <textarea placeholder="Your Message" required></textarea><br>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Finance Manager. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function calculateSavings() {
+            const income = document.getElementById('income').value;
+            const expenses = document.getElementById('expenses').value;
+            const result = document.getElementById('result');
+
+            if (!income || !expenses) {
+                result.textContent = "Please enter both income and expenses.";
+                result.style.color = "red";
+                return;
+            }
+
+            const savings = income - expenses;
+
+            if (savings < 0) {
+                result.textContent = "You're spending more than you earn! Time to cut back on expenses.";
+                result.style.color = "red";
+            } else {
+                result.textContent = `You can save $${savings.toFixed(2)} per month. Great job!`;
+                result.style.color = "green";
+            }
+        }
+
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Thank you for contacting us!');
+        });
+    </script>
+</body>
+</html>
